@@ -1,0 +1,36 @@
+# Load necessary libraries
+library(readxl)
+library(ggplot2)
+library(dplyr)
+
+#This is an example for Sao Paulo. You can change the dataset and perform the same analysis
+# Read the data from Excel
+df_paulo <- read_excel("sao_paulo_data.xlsx", is.na=TRUE)
+
+df_paulo$log_temp <- log(df_paulo$temp)
+df_paulo$log_rad = log(df_paulo$`Mean Area-Weighted Radiance`)
+str(df_paulo)
+
+summary(df_paulo$`Mean Area-Weighted Radiance`)
+summary(df_paulo$temp)
+
+#Code for plotting NTL and temperature time trends in the month (optional):
+matplot(paulo_2013$Date, cbind(paulo_2013$`Mean Area-Weighted Radiance`, paulo_2013$temp), type="o", pch=c(1,15), col=c("blue", "red"), lty=1, lwd=2, xlab="Date", ylab="GDP Growth Rate(%)", main="Radiance Intensity and Temperature of Sao Paulo, August 2013")
+
+library(zoo)
+ts_data <- ts(df_paulo, start = c(2013, 2), frequency = 12)  # Monthly data
+regression = data.frame(
+  Date = as.Date(time(ts_data), origin = "2013-02-15"), radiance = df_paulo$`Mean Area-Weighted Radiance`, Time = 1:length(ts_data)
+)
+
+#Now conduct the Pearson Correlation Coefficient and Granger Causality Test:
+ts1 = df_paulo$`Mean Area-Weighted Radiance`
+ts2 = df_paulo$temp
+
+cor(ts1, ts2, use = "complete.obs")  # Pearson correlation
+
+grangertest(ts1 ~ ts2, order = 2)  # Granger causality test
+
+#Stationarity Test:
+adf.test(df_paulo$temp)
+adf.test(df_paulo$`Mean Area-Weighted Radiance`)
