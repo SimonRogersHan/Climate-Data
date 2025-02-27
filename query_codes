@@ -1,0 +1,11 @@
+#Query Codes for the Data in Delhi, Guangzhou, Cairo and Sao Paulo. The API used is the Timeline Weather API:
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Delhi/2013-01-01/2020-01-01?unitGroup=us&key=5F48445B22X6LYENBY89DNKC2&contentType=json
+
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Guangzhou/2013-01-01/2020-01-01?unitGroup=us&key=5F48445B22X6LYENBY89DNKC2&contentType=json
+
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Cairo/2013-01-01/2020-01-01?unitGroup=us&key=5F48445B22X6LYENBY89DNKC2&contentType=json
+
+https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Sao%20Paulo/2013-01-01/2020-01-01?unitGroup=us&key=5F48445B22X6LYENBY89DNKC2&contentType=json
+
+#A comprehensive documentation for the climate data queried can be found in the following website:
+#https://www.visualcrossing.com/resources/documentation/weather-data/weather-data-documentation/
